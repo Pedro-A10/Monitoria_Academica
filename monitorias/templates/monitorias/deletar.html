@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Excluir Monitoria</title>
+</head>
+<body>
+    <h1>Excluir Monitoria</h1>
+    <p>Tem certeza que deseja excluir "{{ monitoria.titulo }}"?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmar</button>
+    </form>
+
+    <a href="{% url 'listar_monitorias' %}">Cancelar</a>
+</body>
+python </html>

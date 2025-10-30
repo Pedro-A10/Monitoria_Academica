@@ -1,5 +1,5 @@
 from django import forms
-from models import Monitoria
+from .models import Monitoria
 
 class MonitoriaForm(forms.ModelForm):
   class Meta:

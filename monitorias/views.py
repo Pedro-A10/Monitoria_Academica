@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from models import Monitoria
-from forms import MonitoriaForm
+from .models import Monitoria
+from .forms import MonitoriaForm
 
 def listar_monitorias(request):
     monitorias = Monitoria.objects.all()

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Monitorias</title>
+</head>
+<body>
+<h1>Lista de Monitorias</h1>
+
+<a href="{% url 'criar_monitoria' %}">+ Nova Monitoria </a>
+
+<ul>
+        {% for m in monitorias %}
+            <li>
+                <strong>{{ m.titulo }}</strong> - {{ m.professor_responsavel }}
+                <a href="{% url 'editar_monitoria' m.id %}">Editar</a>
+                <a href="{% url 'deletar_monitoria' m.id %}">Excluir</a>
+            </li>
+        {% empty %}
+            <li>Nenhuma monitoria cadastrada.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
