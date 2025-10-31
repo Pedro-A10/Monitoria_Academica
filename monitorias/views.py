@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Monitoria
+from monitorias.models import Monitoria
 from .forms import MonitoriaForm
 
 def listar_monitorias(request):
@@ -14,13 +14,13 @@ def criar_monitoria(request):
       monitoria.monitor = request.user
       monitoria.save()
       return redirect('listar_monitorias')
-    else:
+  else:
       form = MonitoriaForm()
       return render(request, 'monitorias/form.html', {'form': form})
 
 def atualizar_monitoria(request):
-  momitoria = get_object_or_404(Monitoria, id=id)
-  form = MonitoriaForm(request.POST or None, instance=momitoria)
+  monitoria = get_object_or_404(Monitoria, id=id)
+  form = MonitoriaForm(request.POST or None, instance=monitoria)
   if form.is_valid():
     form.save()
     return redirect('listar_monitorias')
