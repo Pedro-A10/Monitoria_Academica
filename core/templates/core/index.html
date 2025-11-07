@@ -2,10 +2,93 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Sistema de Monitoria Acadêmica</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Monitoria Acadêmica - Listagem</title>
+
+  <style>
+    /* Estilos Gerais (Reset/Base) */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; /* Fundo claro para contraste */
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Estrutura Principal */
+    .container {
+        max-width: 800px; /* Limita a largura máxima do conteúdo */
+        margin: 40px auto; /* Centraliza o contêiner e adiciona margem vertical */
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 8px; /* Cantos arredondados */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Títulos */
+    header h1 {
+        text-align: center;
+        color: #0056b3; /* Cor institucional/primária */
+        margin-bottom: 20px;
+    }
+
+    /* Lista de Monitorias (Sua .caixa anterior) */
+    .lista-monitorias {
+        list-style: none; /* Remove marcadores da lista */
+        padding: 0;
+        margin: 20px 0;
+        /* Estilos do box-shadow originais, mas mais suaves */
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51, 0.2) 0px 0px 0px 1px;
+        border-radius: 4px;
+        padding: 15px; /* Adiciona padding interno */
+    }
+
+    .lista-monitorias li {
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .lista-monitorias li:last-child {
+        border-bottom: none;
+    }
+
+    /* Botão/Link de Nova Monitoria */
+    .btn-nova-monitoria {
+        display: inline-block; /* Permite definir padding e margem */
+        text-decoration: none;
+        background-color: #28a745; /* Cor de sucesso (verde) */
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        margin-bottom: 20px;
+    }
+
+    .btn-nova-monitoria:hover {
+        background-color: #218838;
+    }
+  </style>
 </head>
 <body>
-<h1>Bem-vindo</h1>
-<p>Início do projeto</p>
+    <header>
+        <h1>Sistema de Monitoria Acadêmica</h1>
+    </header>
+
+    <main class="container">
+        <h2>Lista de Monitorias</h2>
+        
+        <a href="{% url 'criar_monitoria' %}" class="btn-nova-monitoria">+ Nova Monitoria</a>
+
+        <ul class="lista-monitorias">
+          {% for monitoria in lista_monitorias %}
+              <li>{{ monitoria.disciplina }} - {{ monitoria.monitor.nome }}</li>
+          {% empty %}
+              <li>Nenhuma monitoria cadastrada.</li>
+          {% endfor %}
+        </ul>
+    </main>
+
+    <footer>
+        </footer>
 </body>
 </html>
