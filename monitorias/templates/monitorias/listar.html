@@ -1,24 +1,27 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>Monitorias</title>
-</head>
-<body>
-<h1>Lista de Monitorias</h1>
+{% extends 'core/base.html' %}
 
-<a href="{% url 'criar_monitoria' %}">+ Nova Monitoria </a>
+{% block title %}Lista de Monitorias{% endblock %}
 
-<ul>
+{% block content %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3">Lista de Monitorias</h1>
+        <a class="btn btn-success" href="{% url 'criar_monitoria' %}">+ Nova Monitoria</a>
+    </div>
+
+    <div class="list-group">
         {% for m in monitorias %}
-            <li>
-                <strong>{{ m.titulo }}</strong> - {{ m.professor_responsavel }}
-                <a href="{% url 'editar_monitoria' m.id %}">Editar</a>
-                <a href="{% url 'deletar_monitoria' m.id %}">Excluir</a>
-            </li>
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>{{ m.titulo }}</strong>
+                    <div class="text-muted">Professor: {{ m.professor }}</div>
+                </div>
+                <div>
+                    <a class="btn btn-sm btn-primary me-2" href="{% url 'atualizar_monitoria' m.id %}">Editar</a>
+                    <a class="btn btn-sm btn-danger" href="{% url 'deletar_monitoria' m.id %}">Excluir</a>
+                </div>
+            </div>
         {% empty %}
-            <li>Nenhuma monitoria cadastrada.</li>
+            <div class="list-group-item">Nenhuma monitoria cadastrada.</div>
         {% endfor %}
-    </ul>
-</body>
-</html>
+    </div>
+{% endblock %}

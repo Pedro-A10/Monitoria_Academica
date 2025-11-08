@@ -1,18 +1,17 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Formulário de Monitoria</title>
-</head>
-<body>
-    <h1>Formulário de Monitoria</h1>
+{% extends 'core/base.html' %}
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Salvar</button>
-    </form>
+{% block title %}Formulário de Monitoria{% endblock %}
 
-    <a href="{% url 'listar_monitorias' %}">Voltar</a>
-</body>
-</html>
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h1 class="h4">Formulário de Monitoria</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-primary" type="submit">Salvar</button>
+                <a class="btn btn-secondary ms-2" href="{% url 'listar_monitorias' %}">Voltar</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,18 +1,17 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Excluir Monitoria</title>
-</head>
-<body>
-    <h1>Excluir Monitoria</h1>
-    <p>Tem certeza que deseja excluir "{{ monitoria.titulo }}"?</p>
+{% extends 'core/base.html' %}
 
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Confirmar</button>
-    </form>
+{% block title %}Excluir Monitoria{% endblock %}
 
-    <a href="{% url 'listar_monitorias' %}">Cancelar</a>
-</body>
-python </html>
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h1 class="h4">Excluir Monitoria</h1>
+            <p>Tem certeza que deseja excluir "{{ monitoria.titulo }}"?</p>
+            <form method="post">
+                {% csrf_token %}
+                <button class="btn btn-danger" type="submit">Confirmar</button>
+                <a class="btn btn-secondary ms-2" href="{% url 'listar_monitorias' %}">Cancelar</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}
