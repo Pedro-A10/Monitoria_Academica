@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}Sistema de Monitoria{% endblock %}</title>
+  {% block extra_style %}{% endblock %}
   <!-- Set theme early to avoid flash -->
   <script>
     (function(){
@@ -52,7 +53,7 @@
               <button type="submit" class="btn btn-outline-light btn-sm me-2">Sair</button>
             </form>
           {% else %}
-            <a class="btn btn-outline-light btn-sm me-2" href="/admin/login/">Entrar</a>
+            <a class="btn btn-outline-light btn-sm me-2" href="{% url 'login' %}">Entrar</a>
           {% endif %}
           <!-- Theme toggle button -->
           <button id="theme-toggle" class="btn btn-sm btn-light" title="Alternar tema">🌙</button>

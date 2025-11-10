@@ -9,9 +9,11 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('listar_monitorias')
+            messages.success(request, f'Bem-vindo, {user.username}!')
+            next_url = request.GET.get('next', 'listar_monitorias')
+            return redirect(next_url)
         else:
-            messages.error(request, 'Usuário ou senha incorretos')
+            messages.error(request, 'Credenciais inválidas. Por favor, verifique seu usuário e senha.')
     else:
         form = AuthenticationForm()
     return render(request, 'contas/login.html', {'form': form})
