@@ -2,6 +2,25 @@
 
 {% block title %}Lista de Monitorias{% endblock %}
 
+{% block extra_style %}
+<style>
+    /* Forçar fundo branco na lista mesmo quando o tema estiver em dark */
+    [data-bs-theme="dark"] .list-group,
+    [data-bs-theme="dark"] .list-group-item {
+        background-color: #fff !important;
+        color: #000 !important;
+        border-color: #e5e5e5 !important;
+    }
+    [data-bs-theme="dark"] .list-group-item .text-muted {
+        color: rgba(0,0,0,0.6) !important;
+    }
+    /* Forçar h1 branco no tema escuro */
+    [data-bs-theme="dark"] h1 {
+        color: #fff !important;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="h3">Lista de Monitorias</h1>
