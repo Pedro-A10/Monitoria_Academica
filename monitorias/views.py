@@ -5,6 +5,7 @@ from .models import Monitoria
 from .forms import MonitoriaForm
 
 
+@login_required
 def listar_monitorias(request):
   monitorias = Monitoria.objects.all()
   return render(request, 'monitorias/listar.html', {'monitorias': monitorias})
