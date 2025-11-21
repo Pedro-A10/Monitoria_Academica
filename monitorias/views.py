@@ -3,7 +3,10 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Monitoria
 from .forms import MonitoriaForm
+from django.contrib.auth.decorators import user_passes_test
 
+def admin_required(view_func):
+  return user_passes_test(lambda u: u.is_staff)(view_func)
 
 @login_required
 def listar_monitorias(request):
@@ -12,6 +15,7 @@ def listar_monitorias(request):
 
 
 @login_required
+@admin_required
 def criar_monitoria(request):
   if request.method == 'POST':
     form = MonitoriaForm(request.POST)
@@ -27,6 +31,7 @@ def criar_monitoria(request):
 
 
 @login_required
+@admin_required
 def atualizar_monitoria(request, id):
   monitoria = get_object_or_404(Monitoria, id=id)
   if request.method == 'POST':
@@ -41,6 +46,7 @@ def atualizar_monitoria(request, id):
 
 
 @login_required
+@admin_required
 def excluir_monitoria(request, id):
   monitoria = get_object_or_404(Monitoria, id=id)
   if request.method == 'POST':
